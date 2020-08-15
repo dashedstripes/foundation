@@ -3,16 +3,25 @@
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
    "devDependencies": {
-      "ts-node": "3.3.0",
+      "@babel/core": "^7.11.1",
+      "@babel/plugin-proposal-decorators": "^7.10.5",
+      "@babel/preset-env": "^7.11.0",
+      "@types/jest": "^26.0.9",
       "@types/node": "^8.0.29",
-      "typescript": "3.3.3333"
+      "babel-jest": "^26.3.0",
+      "jest": "^26.4.0",
+      "ts-jest": "^26.2.0",
+      "ts-node": "3.3.0",
+      "typescript": "^3.9.7"
    },
    "dependencies": {
-      "typeorm": "0.2.25",
+      "class-validator": "^0.12.2",
       "reflect-metadata": "^0.1.10",
-      "sqlite3": "^4.0.3"
+      "sqlite3": "^4.0.3",
+      "typeorm": "0.2.25"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
+      "start": "ts-node src/index.ts",
+      "test": "jest"
    }
 }

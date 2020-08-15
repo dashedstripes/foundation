@@ -1,6 +1,9 @@
-# Awesome Project Build with TypeORM
+# Foundation
 
-Steps to run this project:
+A base project using typeorm and jest.
+
+
+### Steps to run this project:
 
 1. Run `npm i` command
 2. Setup database settings inside `ormconfig.json` file
