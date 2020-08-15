@@ -27,6 +27,10 @@ describe('User', () => {
     await connection.createQueryBuilder().delete().from(User).execute()
   })
 
+  afterAll(async () => {
+    await connection.close()
+  })
+
   it('should create a user', async () => {
     await connection.manager.save(user)
     const newUser = await connection.manager.findOne(User)
