@@ -1,7 +1,7 @@
 import { Service } from 'typedi';
-import { User } from '../entity/user';
+import { User } from './user-entity';
 import { getConnection } from 'typeorm';
-import { UserInput } from '../graphql/user/user-input';
+import { UserInput } from './user-input';
 
 @Service()
 export class UserService {

@@ -3,7 +3,7 @@ import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { createConnection } from "typeorm";
 import { buildSchema } from "type-graphql";
-import { UserResolver } from "./graphql/user/user-resolver";
+import { UserResolver } from "./user/user-resolver";
 import Container from "typedi";
 
 createConnection('local').then(async (connection) => {

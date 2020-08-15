@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
-import { User } from "../../entity/user";
-import { UserService } from "../../services/user-service";
+import { User } from "./user-entity";
+import { UserService } from "./user-service";
 import { UserInput } from "./user-input";
 
 @Resolver(User)

@@ -1,5 +1,5 @@
 import {createConnection} from "typeorm"
-import {User} from '../../src/entity/user'
+import {User} from './user-entity'
 import { validate } from "class-validator";
 
 function buildValidUser() {
