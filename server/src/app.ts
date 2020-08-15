@@ -1,20 +1,31 @@
 import "reflect-metadata";
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
-import schema from './graphql/schema';
-import resolvers from "./graphql/resolvers";
+import { createConnection } from "typeorm";
+import { buildSchema } from "type-graphql";
+import { UserResolver } from "./graphql/entity/user-resolver";
+import Container from "typedi";
+import { User } from "./entity/user";
 
-const port = 3000;
-const app = express();
+createConnection('local').then(async (connection) => {
 
-app.use(express.json({ limit: "50mb" }));
+  const port = 3000;
+  const app = express();
 
-app.use('/graphql', graphqlHTTP({
-  schema,
-  rootValue: resolvers,
-  graphiql: true,
-}));
+  const schema = await buildSchema({
+    resolvers: [UserResolver],
+    container: Container,
+  });
+  
+  app.use(express.json({ limit: "50mb" }));
+  
+  app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+  }));
+  
+  app.listen(port, () => {
+    console.log(`http://localhost:${port}`)
+  })
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`)
-})
+});
