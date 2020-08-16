@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { User } from "./user-entity";
 import { UserService } from "./user-service";
 import { UserInput } from "./user-input";
+import { GraphQLError } from "graphql";
 
 @Resolver(User)
 export class UserResolver {
@@ -18,7 +19,7 @@ export class UserResolver {
     try {
       return await this.userService.create(user);
     } catch(err) {
-      throw new Error(err);
+      throw new GraphQLError(err);
     }
   }
 }
