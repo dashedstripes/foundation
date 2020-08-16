@@ -15,6 +15,10 @@ export class UserResolver {
 
   @Mutation(returns => User)
   async createUser(@Arg('user') user: UserInput) {
-    return this.userService.create(user);
+    try {
+      return await this.userService.create(user);
+    } catch(err) {
+      throw new Error(err);
+    }
   }
 }

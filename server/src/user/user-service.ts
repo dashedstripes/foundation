@@ -2,6 +2,8 @@ import { Service } from 'typedi';
 import { User } from './user-entity';
 import { getConnection } from 'typeorm';
 import { UserInput } from './user-input';
+import { validate } from 'class-validator';
+import { GraphQLError } from 'graphql';
 
 @Service()
 export class UserService {
@@ -15,6 +17,13 @@ export class UserService {
     user.firstName = input.firstName
     user.lastName = input.lastName
     user.age = input.age
+
+    const errors = await validate(user);
+
+    if(errors.length > 0) {
+      throw errors;
+    }
+
     return await getConnection('local').getRepository(User).save(user);
   }
 

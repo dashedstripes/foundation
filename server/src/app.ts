@@ -20,7 +20,7 @@ createConnection('local').then(async (connection) => {
   
   app.use('/graphql', graphqlHTTP({
     schema,
-    graphiql: true
+    graphiql: true,
   }));
   
   app.listen(port, () => {
