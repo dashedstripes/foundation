@@ -3,7 +3,6 @@ import { User } from './user-entity';
 import { getConnection } from 'typeorm';
 import { UserInput } from './user-input';
 import { validate } from 'class-validator';
-import { GraphQLError } from 'graphql';
 
 @Service()
 export class UserService {
